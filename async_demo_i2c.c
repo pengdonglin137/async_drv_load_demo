@@ -51,7 +51,7 @@ static int async_demo4_probe(struct i2c_client *i2c,
 			 const struct i2c_device_id *id)
 {
 	printk("%s enter\n", __func__);
-	msleep(4000);
+	msleep(1000);
 	printk("%s exit\n", __func__);
 	return 0;
 }
@@ -93,7 +93,7 @@ static int async_demo3_probe(struct i2c_client *i2c,
 			 const struct i2c_device_id *id)
 {
 	printk("%s enter\n", __func__);
-	msleep(4000);
+	msleep(2000);
 	printk("%s exit\n", __func__);
 	return 0;
 }
@@ -135,7 +135,7 @@ static int async_demo2_probe(struct i2c_client *i2c,
 			 const struct i2c_device_id *id)
 {
 	printk("%s enter\n", __func__);
-	msleep(4000);
+	msleep(3000);
 	printk("%s exit\n", __func__);
 	return 0;
 }

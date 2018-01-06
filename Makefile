@@ -1,5 +1,6 @@
 ifneq ($(KERNELRELEASE),)
 	obj-m := async_demo.o
+	obj-m += async_demo_v2.o
 	obj-m += async_demo_i2c.o
 else
 	PWD := $(shell pwd)

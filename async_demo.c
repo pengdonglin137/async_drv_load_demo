@@ -3,7 +3,7 @@
 #include <linux/of.h>
 #include <linux/delay.h>
 
-#define USE_ASYNC
+//#define USE_ASYNC
 
 static int async_demo1_probe(struct platform_device *pdev)
 {
