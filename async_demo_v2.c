@@ -3,7 +3,7 @@
 #include <linux/of.h>
 #include <linux/delay.h>
 
-#define USE_ASYNC
+//#define USE_ASYNC
 
 static int async_demo1_v2_probe(struct platform_device *pdev)
 {
@@ -145,6 +145,8 @@ static struct platform_driver async_demo4_v2_driver = {
 	},
 };
 
+static struct platform_device *pdev[4];
+
 static __init int async_demo_init(void)
 {
 	printk("%s enter.\n", __func__);
@@ -156,10 +158,10 @@ static __init int async_demo_init(void)
 	platform_driver_register(&async_demo4_v2_driver);
 
 	printk("\n\n Register Platform Device\n");
-	platform_device_register_simple("async_demo1_v2", 0, NULL, 0);
-	platform_device_register_simple("async_demo2_v2", 0, NULL, 0);
-	platform_device_register_simple("async_demo3_v2", 0, NULL, 0);
-	platform_device_register_simple("async_demo4_v2", 0, NULL, 0);
+	pdev[0] = platform_device_register_simple("async_demo1_v2", 0, NULL, 0);
+	pdev[1] = platform_device_register_simple("async_demo2_v2", 0, NULL, 0);
+	pdev[2] = platform_device_register_simple("async_demo3_v2", 0, NULL, 0);
+	pdev[3] = platform_device_register_simple("async_demo4_v2", 0, NULL, 0);
 
 	return 0;
 }
@@ -167,6 +169,11 @@ static __init int async_demo_init(void)
 static __exit void async_demo_exit(void)
 {
 	printk("%s enter.\n", __func__);
+
+	platform_device_unregister(pdev[0]);
+	platform_device_unregister(pdev[1]);
+	platform_device_unregister(pdev[2]);
+	platform_device_unregister(pdev[3]);
 
 	platform_driver_unregister(&async_demo1_v2_driver);
 	platform_driver_unregister(&async_demo2_v2_driver);
